@@ -9,7 +9,6 @@ const Home = () => {
   const { user, loading } = useAuth();
   const navigate = useNavigate();
 
-  
   const fetchPosts = async () => {
     try {
       const res = await axios.get('/posts');
@@ -19,10 +18,9 @@ const Home = () => {
     }
   };
 
- 
   const handleDelete = async (id) => {
     try {
-      const token = await user.getIdToken(); 
+      const token = await user.getIdToken();
       await axios.delete(`/posts/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -33,7 +31,6 @@ const Home = () => {
       console.error('Failed to delete post:', err.response?.data || err.message);
     }
   };
-
 
   const handleEdit = (id) => {
     navigate(`/edit/${id}`);
@@ -73,6 +70,7 @@ const Home = () => {
           posts.map((post) => (
             <PostCard
               key={post._id}
+              _id={post._id}
               title={post.title}
               description={post.description}
               author={post.author}

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { auth } from '../firebase/firebase';
 
 const instance = axios.create({
-  baseURL: 'https://myblog-2-1iko.onrender.com/',
+  baseURL: 'https://myblog-2-1iko.onrender.com/api',
 });
 
 instance.interceptors.request.use(async (config) => {
